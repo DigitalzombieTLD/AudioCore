@@ -183,5 +183,9 @@
     <Compile Include="AudioEnabler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="_License\AssetsTools.txt" />
+    <Content Include="_License\classdatabase_license.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
