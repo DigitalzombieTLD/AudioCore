@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8C179133-7071-45F3-9B0C-93C79B0EC49F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AudioCore</RootNamespace>
+    <AssemblyName>AudioCore</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>G:\Games\Steam\steamapps\common\TheLongDark\MelonLoader\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>G:\Games\Steam\steamapps\common\TheLongDark\MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem">
+      <HintPath>G:\Games\Steam\steamapps\common\TheLongDark\MelonLoader\Managed\Il2CppSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.Core">
+      <HintPath>G:\Games\Steam\steamapps\common\TheLongDark\MelonLoader\Managed\Il2CppSystem.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MelonLoader">
+      <HintPath>G:\Games\Steam\steamapps\common\TheLongDark\MelonLoader\MelonLoader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnhollowerBaseLib">
+      <HintPath>G:\Games\Steam\steamapps\common\TheLongDark\MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnhollowerRuntimeLib">
+      <HintPath>G:\Games\Steam\steamapps\common\TheLongDark\MelonLoader\Managed\UnhollowerRuntimeLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>G:\Games\Steam\steamapps\common\TheLongDark\MelonLoader\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>G:\Games\Steam\steamapps\common\TheLongDark\MelonLoader\Managed\UnityEngine.AudioModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>G:\Games\Steam\steamapps\common\TheLongDark\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssetTools\Extra\AssetHelper.cs" />
+    <Compile Include="AssetTools\Extra\AssetID.cs" />
+    <Compile Include="AssetTools\Extra\AssetsManager\AssetsFileInstance.cs" />
+    <Compile Include="AssetTools\Extra\AssetsManager\AssetsManager.cs" />
+    <Compile Include="AssetTools\Extra\AssetsManager\BundleFileInstance.cs" />
+    <Compile Include="AssetTools\Extra\AssetWriters.cs" />
+    <Compile Include="AssetTools\Extra\BundleHelper.cs" />
+    <Compile Include="AssetTools\Extra\CldbTypeTreeConverters\C2T5.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZ4\Lz4DecoderStream.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZ4\Safe\LZ4Codec.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZ4\Safe\LZ4Codec.Safe.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZ4\Safe\LZ4Codec.Safe32.Dirty.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZ4\Safe\LZ4Codec.Safe32HC.Dirty.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZ4\Safe\LZ4Codec.Safe64.Dirty.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZ4\Safe\LZ4Codec.Safe64HC.Dirty.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Common\CommandLineParser.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Common\CRC.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Common\InBuffer.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Common\OutBuffer.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Compress\LZMA\LzmaBase.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Compress\LZMA\LzmaDecoder.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Compress\LZMA\LzmaEncoder.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Compress\LZ\IMatchFinder.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Compress\LZ\LzBinTree.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Compress\LZ\LzInWindow.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Compress\LZ\LzOutWindow.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Compress\RangeCoder\RangeCoder.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Compress\RangeCoder\RangeCoderBit.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\Compress\RangeCoder\RangeCoderBitTree.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\ICoder.cs" />
+    <Compile Include="AssetTools\Extra\Decompressors\LZMA\SevenZipHelper.cs" />
+    <Compile Include="AssetTools\Extra\MonoDeserializer\MonoDeserializer.cs" />
+    <Compile Include="AssetTools\Extra\Net35Polyfill.cs" />
+    <Compile Include="AssetTools\Extra\TextureDecoders\ASTCDecoder.cs" />
+    <Compile Include="AssetTools\Extra\TextureDecoders\BC7BitReader.cs" />
+    <Compile Include="AssetTools\Extra\TextureDecoders\BC7Decoder.cs" />
+    <Compile Include="AssetTools\Extra\TextureDecoders\BPTCTables.cs" />
+    <Compile Include="AssetTools\Extra\TextureDecoders\DivisionTables.cs" />
+    <Compile Include="AssetTools\Extra\TextureDecoders\DXTDecoders.cs" />
+    <Compile Include="AssetTools\Extra\TextureDecoders\ETCDecoders.cs" />
+    <Compile Include="AssetTools\Extra\TextureDecoders\ETCTables.cs" />
+    <Compile Include="AssetTools\Extra\TextureDecoders\RGBADecoders.cs" />
+    <Compile Include="AssetTools\Extra\ValueBuilder.cs" />
+    <Compile Include="AssetTools\Standard\AssetsBundleFileFormat\AssetsBundleBlockAndDirectoryList06.cs" />
+    <Compile Include="AssetTools\Standard\AssetsBundleFileFormat\AssetsBundleBlockInfo06.cs" />
+    <Compile Include="AssetTools\Standard\AssetsBundleFileFormat\AssetsBundleDirectoryInfo06.cs" />
+    <Compile Include="AssetTools\Standard\AssetsBundleFileFormat\AssetsBundleEntry.cs" />
+    <Compile Include="AssetTools\Standard\AssetsBundleFileFormat\AssetsBundleFile.cs" />
+    <Compile Include="AssetTools\Standard\AssetsBundleFileFormat\AssetsBundleFilePar.cs" />
+    <Compile Include="AssetTools\Standard\AssetsBundleFileFormat\AssetsBundleHeader03.cs" />
+    <Compile Include="AssetTools\Standard\AssetsBundleFileFormat\AssetsBundleHeader06.cs" />
+    <Compile Include="AssetTools\Standard\AssetsBundleFileFormat\AssetsBundleOffsetPair.cs" />
+    <Compile Include="AssetTools\Standard\AssetsBundleFileFormat\AssetsList.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\AssetFileInfo.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\AssetFileList.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\AssetPPtr.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\AssetsFile.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\AssetsFileDependency.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\AssetsFileDependencyList.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\AssetsFileExtra.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\AssetsFileHeader.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\AssetsFileReader.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\AssetsFileWriter.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\Hash128.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\PreloadList.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\TypeField_07.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\TypeField_0D.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\TypeTree.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\Type_07.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileFormat\Type_0D.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileTable\AssetFileInfoEx.cs" />
+    <Compile Include="AssetTools\Standard\AssetsFileTable\AssetsFileTable.cs" />
+    <Compile Include="AssetTools\Standard\AssetsReplacer\AssetsRemover.cs" />
+    <Compile Include="AssetTools\Standard\AssetsReplacer\AssetsReplacementType.cs" />
+    <Compile Include="AssetTools\Standard\AssetsReplacer\AssetsReplacer.cs" />
+    <Compile Include="AssetTools\Standard\AssetsReplacer\AssetsReplacerFromMemory.cs" />
+    <Compile Include="AssetTools\Standard\AssetsReplacer\AssetsReplacerFromStream.cs" />
+    <Compile Include="AssetTools\Standard\AssetTypeClass\AssetTypeArray.cs" />
+    <Compile Include="AssetTools\Standard\AssetTypeClass\AssetTypeByteArray.cs" />
+    <Compile Include="AssetTools\Standard\AssetTypeClass\AssetTypeInstance.cs" />
+    <Compile Include="AssetTools\Standard\AssetTypeClass\AssetTypeTemplateField.cs" />
+    <Compile Include="AssetTools\Standard\AssetTypeClass\AssetTypeValue.cs" />
+    <Compile Include="AssetTools\Standard\AssetTypeClass\AssetTypeValueField.cs" />
+    <Compile Include="AssetTools\Standard\AssetTypeClass\EnumValueTypes.cs" />
+    <Compile Include="AssetTools\Standard\BundleReplacer\BundleRemover.cs" />
+    <Compile Include="AssetTools\Standard\BundleReplacer\BundleRenamer.cs" />
+    <Compile Include="AssetTools\Standard\BundleReplacer\BundleReplacementType.cs" />
+    <Compile Include="AssetTools\Standard\BundleReplacer\BundleReplacer.cs" />
+    <Compile Include="AssetTools\Standard\BundleReplacer\BundleReplacerFromAssets.cs" />
+    <Compile Include="AssetTools\Standard\BundleReplacer\BundleReplacerFromMemory.cs" />
+    <Compile Include="AssetTools\Standard\BundleReplacer\BundleReplacerFromStream.cs" />
+    <Compile Include="AssetTools\Standard\ClassDatabaseFile\ClassDatabaseFile.cs" />
+    <Compile Include="AssetTools\Standard\ClassDatabaseFile\ClassDatabaseFileHeader.cs" />
+    <Compile Include="AssetTools\Standard\ClassDatabaseFile\ClassDatabaseFileString.cs" />
+    <Compile Include="AssetTools\Standard\ClassDatabaseFile\ClassDatabasePackage.cs" />
+    <Compile Include="AssetTools\Standard\ClassDatabaseFile\ClassDatabasePackageHeader.cs" />
+    <Compile Include="AssetTools\Standard\ClassDatabaseFile\ClassDatabaseType.cs" />
+    <Compile Include="AssetTools\Standard\ClassDatabaseFile\ClassDatabaseTypeField.cs" />
+    <Compile Include="AssetTools\Standard\TextureFileFormat\TextureFile.cs" />
+    <Compile Include="AudioCore.cs" />
+    <Compile Include="AudioEnabler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
