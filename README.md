@@ -3,7 +3,7 @@ Enables the standard Unity audio engine in The Long Dark
 
 1. Install MelonLoader as described on https://xpazeman.com/tld-mod-list/
 2. Download the latest release: 
-3. Extract the the files "AudioCore.dll" and "AudioCoreData.tpk" into your \Steam\steamapps\common\TheLongDark\*PLUGINS*\ folder
+3. Extract the the files "AudioCore.dll" and "AudioCoreData.tpk" into your \Steam\steamapps\common\TheLongDark\PLUGINS\ folder
 4. Start the game
 
 
