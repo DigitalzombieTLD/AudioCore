@@ -13,18 +13,16 @@ namespace AudioCore
 		public static string DataPath = "tld_Data\\";
 		public static string AssetFile = "globalgamemanagers";
 		public static string PluginsPath = "Plugins\\";
-		public static string ClassDatabase = "AudioCoreData.tpk";
 
 		public static AssetsManager am;
 		public static AssetsFileInstance afi;
 
-		public static AssetFileInfoEx audioInfo;
-		public static AssetTypeInstance audioAti;
+		public static AssetFileInfo audioInfo;
 		public static AssetTypeValueField audioBaseField;
 
 		public static bool CheckAudio()
 		{
-			bool field = audioBaseField.Get("m_DisableAudio").GetValue().AsBool(); ;
+			bool field = audioBaseField.Get("m_DisableAudio").AsBool;
 			return field;
 		}
 
@@ -32,12 +30,11 @@ namespace AudioCore
 		{
 			am = new AssetsManager();
 			afi = am.LoadAssetsFile(Path.Combine(DataPath, AssetFile), false);
-			am.LoadClassPackage(Path.Combine(PluginsPath, ClassDatabase));
-			am.LoadClassDatabaseFromPackage(afi.file.typeTree.unityVersion);
+			MelonUtils.LoadIncludedClassPackage(am);
+			am.LoadClassDatabaseFromPackage(afi.file.Metadata.UnityVersion);
 
-			audioInfo = afi.table.GetAssetInfo(4);
-			audioAti = am.GetTypeInstance(afi.file, audioInfo);
-			audioBaseField = audioAti.GetBaseField();			
+			audioInfo = afi.file.GetAssetInfo(4);
+			audioBaseField = am.GetBaseField(afi, audioInfo);
 		}
 
 		public static void DisableUnityAudio(bool choice)
@@ -52,14 +49,13 @@ namespace AudioCore
 			}			
 
 			try
-			{				
-				audioBaseField.Get("m_DisableAudio").GetValue().Set(choice);
+			{	
+				audioBaseField.Get("m_DisableAudio").Value.AsBool = choice;
 
 				byte[] audioAsset;
 				using (MemoryStream memStream = new MemoryStream())
 				using (AssetsFileWriter writer = new AssetsFileWriter(memStream))
-				{
-					writer.bigEndian = false;
+				{					
 					audioBaseField.Write(writer);
 					audioAsset = memStream.ToArray();
 				}
@@ -67,8 +63,8 @@ namespace AudioCore
 				using (MemoryStream memStream = new MemoryStream())
 				using (AssetsFileWriter writer = new AssetsFileWriter(memStream))
 				{
-					afi.file.Write(writer, 0, rep, 0);
-					afi.stream.Close();
+					afi.file.Write(writer, 0, rep);
+					afi.file.Close();
 					File.WriteAllBytes(Path.Combine(DataPath, AssetFile), memStream.ToArray());
 				}
 

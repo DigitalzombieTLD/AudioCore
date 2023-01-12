@@ -1,9 +1,12 @@
 ﻿using MelonLoader;
+using UnityEngine;
+using Il2CppInterop;
+using Il2CppInterop.Runtime.Injection;
 
 namespace AudioCore
 {
-    public class AudioCore_Main : MelonPlugin
-    {
+	public class AudioCoreMain : MelonPlugin
+	{
 		public static bool audioEnabled;
 
 		public override void OnPreInitialization() // runs before game initialization.
@@ -11,10 +14,10 @@ namespace AudioCore
 			MelonLogger.Msg("Audio preInitialization ...");
 
 			Audio_Enabler_Main.LoadGlobalgamemanagers();
-			
-			if(!Audio_Enabler_Main.CheckAudio())
+
+			if (!Audio_Enabler_Main.CheckAudio())
 			{
-				MelonLogger.Msg("Unity audio already enabled ... skipping");				
+				MelonLogger.Msg("Unity audio already enabled ... skipping");
 			}
 			else
 			{
@@ -22,6 +25,6 @@ namespace AudioCore
 			}
 
 			Audio_Enabler_Main.am.UnloadAllAssetsFiles();
-		}		
+		}
 	}
 }
