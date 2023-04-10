@@ -13,18 +13,7 @@ namespace AudioCore
 		{
 			MelonLogger.Msg("Audio preInitialization ...");
 
-			Audio_Enabler_Main.LoadGlobalgamemanagers();
-
-			if (!Audio_Enabler_Main.CheckAudio())
-			{
-				MelonLogger.Msg("Unity audio already enabled ... skipping");
-			}
-			else
-			{
-				Audio_Enabler_Main.DisableUnityAudio(false);
-			}
-
-			Audio_Enabler_Main.am.UnloadAllAssetsFiles();
+            EditAssetFile.CopyGlobalgamemanagersFile();          
 		}
 	}
 }

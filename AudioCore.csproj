@@ -47,6 +47,9 @@
         </Reference>
     </ItemDefinitionGroup>
     <ItemGroup>
+      <None Remove="Resources\globalgamemanagers" />
+    </ItemGroup>
+    <ItemGroup>
       <Reference Include="AssetsTools.NET">
         <HintPath>$(TheLongDarkPath)/MelonLoader/net6/AssetsTools.NET.dll</HintPath>
       </Reference>
@@ -62,6 +65,22 @@
       <Reference Include="UnityEngine">
         <HintPath>$(TheLongDarkPath)/MelonLoader/Dependencies/Il2CppAssemblyGenerator/UnityDependencies/UnityEngine.dll</HintPath>
       </Reference>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Include="Resources\globalgamemanagers" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
     <!--This is the list of assemblies that the mod references. Most of these are unnecessary for normal mods, but are included here for completeness.-->
