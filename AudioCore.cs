@@ -3,6 +3,7 @@ using UnityEngine;
 using Il2CppInterop;
 using Il2CppInterop.Runtime.Injection;
 
+[assembly: MelonPriority(100)]
 namespace AudioCore
 {
 	public class AudioCoreMain : MelonPlugin
