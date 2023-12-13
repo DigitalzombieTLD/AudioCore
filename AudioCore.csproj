@@ -47,27 +47,12 @@
         </Reference>
     </ItemDefinitionGroup>
     <ItemGroup>
-      <None Remove="Resources\globalgamemanagers" />
-    </ItemGroup>
-    <ItemGroup>
       <Reference Include="AssetsTools.NET">
         <HintPath>$(TheLongDarkPath)/MelonLoader/net6/AssetsTools.NET.dll</HintPath>
-      </Reference>
-      <Reference Include="Il2CppInterop.Common">
-        <HintPath>$(TheLongDarkPath)/MelonLoader/net6/Il2CppInterop.Common.dll</HintPath>
-      </Reference>
-      <Reference Include="Il2CppInterop.Runtime">
-        <HintPath>$(TheLongDarkPath)/MelonLoader/net6/Il2CppInterop.Runtime.dll</HintPath>
       </Reference>
       <Reference Include="MelonLoader">
         <HintPath>$(TheLongDarkPath)/MelonLoader/net6/MelonLoader.dll</HintPath>
       </Reference>
-      <Reference Include="UnityEngine">
-        <HintPath>$(TheLongDarkPath)/MelonLoader/Dependencies/Il2CppAssemblyGenerator/UnityDependencies/UnityEngine.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-    <ItemGroup>
-      <EmbeddedResource Include="Resources\globalgamemanagers" />
     </ItemGroup>
     <ItemGroup>
       <Compile Update="Properties\Resources.Designer.cs">

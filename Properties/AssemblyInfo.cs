@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("AudioCore")]
 [assembly: AssemblyCopyright("Digitalzombie")]
-[assembly: AssemblyVersion("2.2.3")]
-[assembly: AssemblyFileVersion("2.2.3")]
-[assembly: MelonInfo(typeof(AudioCoreMain), "AudioCore", "2.2.3", "Digitalzombie", null)]
+[assembly: AssemblyVersion("3.0.0")]
+[assembly: AssemblyFileVersion("3.0.0")]
+[assembly: MelonInfo(typeof(AudioCoreMain), "AudioCore", "3.0.0", "Digitalzombie", null)]
 [assembly: MelonGame("Hinterland", "TheLongDark")]
