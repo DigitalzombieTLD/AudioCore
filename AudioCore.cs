@@ -1,6 +1,5 @@
-﻿using AssetsTools.NET.Extra;
-using AssetsTools.NET;
-using MelonLoader;
+﻿using MelonLoader;
+using System.IO;
 
 namespace AudioCore
 {
@@ -11,63 +10,55 @@ namespace AudioCore
         public static string PluginsPath = "Plugins\\";
 
         public static bool enableAudio = true;
+        const int Offset = 62248;
 
         public override void OnPreInitialization()
         {
-            if (enableAudio)
+            if (Environment.GetCommandLineArgs().Contains("-noaudio") || Environment.GetCommandLineArgs().Contains("-disableaudio"))
             {
-                MelonLogger.Msg("Attempting to enable Unity audio...");
+                enableAudio = false;
+            }
+            else if(Environment.GetCommandLineArgs().Contains("-audio") || Environment.GetCommandLineArgs().Contains("-enableaudio"))
+            {
+                enableAudio = true;
             }
             else
             {
-                MelonLogger.Msg("Attempting to disable Unity audio...");
+                enableAudio = true;
             }
+
+            string StateStr1 = enableAudio ? "enable" : "disable";
+            string StateStr2 = enableAudio ? "enabled" : "disabled";
+
+            MelonLogger.Msg($"Attempting to {StateStr1} Unity audio...");
 
             try
             {
-                AssetsManager am = new AssetsManager();
-                AssetsFileInstance afi = am.LoadAssetsFile(Path.Combine(DataPath, AssetFile), false);
-                MelonUtils.LoadIncludedClassPackage(am);
-                am.LoadClassDatabaseFromPackage(afi.file.Metadata.UnityVersion);
+                string GlobalManagerPath = Path.Combine(DataPath, AssetFile);
 
-                AssetFileInfo audioInfo = afi.file.GetAssetsOfType(AssetClassID.AudioManager)[0];
-                AssetTypeValueField audioBaseField = am.GetBaseField(afi, audioInfo);
-
-                if (audioBaseField.Get("m_DisableAudio").Value.AsBool == true && enableAudio == false)
+                if (File.Exists(GlobalManagerPath))
                 {
-                    MelonLogger.Msg("Unity audio already disabled. Skipping ...");
-                }
-                else if (audioBaseField.Get("m_DisableAudio").Value.AsBool == false && enableAudio == true)
-                {
-                    MelonLogger.Msg("Unity audio already enabled. Skipping ...");
+                    MelonLogger.Msg($"{AssetFile} Found, prepare to patch...");
                 }
                 else
                 {
-                    audioBaseField.Get("m_DisableAudio").Value.AsBool = !enableAudio;
-
-                    List<AssetsReplacer> reps = new List<AssetsReplacer>
-                    {
-                    new AssetsReplacerFromMemory(afi.file, audioInfo, audioBaseField)
-                    };
-
-                    using (MemoryStream memStream = new MemoryStream())
-                    using (AssetsFileWriter writer = new AssetsFileWriter(memStream))
-                    {
-                        afi.file.Write(writer, 0, reps);
-                        am.UnloadAllAssetsFiles();
-                        File.WriteAllBytes(Path.Combine(DataPath, AssetFile), memStream.ToArray());
-                    }
-
-                    if (enableAudio)
-                    {
-                        MelonLogger.Msg("Unity audio successfully enabled!");
-                    }
-                    else
-                    {
-                        MelonLogger.Msg("Unity audio successfully disabled!");
-                    }
+                    MelonLogger.Msg(System.ConsoleColor.Red, $"{AssetFile} not found, patching aborted.");
+                    return;
                 }
-                am.UnloadAllAssetsFiles();               
+
+                byte[] data = File.ReadAllBytes(GlobalManagerPath);
+
+                if((data[Offset] == 0x01 && !enableAudio) || (data[Offset] == 0x00 && enableAudio))
+                {
+                    MelonLogger.Msg(System.ConsoleColor.Green, $"Audio is already {StateStr2}");
+                    return;
+                }
+
+                data[Offset] = enableAudio ? (byte)0x00 : (byte)0x01;
+
+                File.WriteAllBytes(GlobalManagerPath, data);
+
+                MelonLogger.Msg(System.ConsoleColor.Green, $"{AssetFile} patching compleated! Audio now is {StateStr2}.");
             }
             catch (Exception ex)
             {
